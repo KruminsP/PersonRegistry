@@ -1,7 +1,11 @@
+using PersonRegistry.Data;
+using PersonRegistry.Core.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<PersonRegistryDbContext>();
 
 var app = builder.Build();
 
