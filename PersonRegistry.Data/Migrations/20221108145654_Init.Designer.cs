@@ -12,7 +12,7 @@ using PersonRegistry.Data;
 namespace PersonRegistry.Data.Migrations
 {
     [DbContext(typeof(PersonRegistryDbContext))]
-    [Migration("20221103090627_Init")]
+    [Migration("20221108145654_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -40,6 +40,9 @@ namespace PersonRegistry.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("IsMarried")
+                        .HasColumnType("bit");
+
                     b.Property<string>("LastName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -48,8 +51,6 @@ namespace PersonRegistry.Data.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("SpouseId");
 
                     b.ToTable("Persons");
                 });
@@ -66,9 +67,8 @@ namespace PersonRegistry.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Type")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("Primary")
+                        .HasColumnType("bit");
 
                     b.Property<int>("User")
                         .HasColumnType("int");
@@ -96,15 +96,6 @@ namespace PersonRegistry.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("PhoneNumbers");
-                });
-
-            modelBuilder.Entity("PersonRegistry.Core.Models.Person", b =>
-                {
-                    b.HasOne("PersonRegistry.Core.Models.Person", "Spouse")
-                        .WithMany()
-                        .HasForeignKey("SpouseId");
-
-                    b.Navigation("Spouse");
                 });
 #pragma warning restore 612, 618
         }

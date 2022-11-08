@@ -16,7 +16,7 @@ namespace PersonRegistry.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     User = table.Column<int>(type: "int", nullable: false),
-                    Type = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Primary = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -32,16 +32,12 @@ namespace PersonRegistry.Data.Migrations
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     BirthDate = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    IsMarried = table.Column<bool>(type: "bit", nullable: false),
                     SpouseId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Persons", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Persons_Persons_SpouseId",
-                        column: x => x.SpouseId,
-                        principalTable: "Persons",
-                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -57,11 +53,6 @@ namespace PersonRegistry.Data.Migrations
                 {
                     table.PrimaryKey("PK_PhoneNumbers", x => x.Id);
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Persons_SpouseId",
-                table: "Persons",
-                column: "SpouseId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

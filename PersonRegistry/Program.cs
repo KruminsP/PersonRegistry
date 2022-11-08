@@ -1,11 +1,33 @@
 using PersonRegistry.Data;
 using PersonRegistry.Core.Models;
+using PersonRegistry.Core.Services;
+using PersonRegistry.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(
+        builder =>
+        {
+            builder.WithOrigins("https://localhost:7062", "http://localhost:4200")
+                .AllowAnyHeader()
+                .AllowAnyMethod();
+        });
+});
+
 builder.Services.AddDbContext<PersonRegistryDbContext>();
+
+builder.Services.AddScoped<IPersonRegistryDbContext, PersonRegistryDbContext>();
+builder.Services.AddScoped<IDbService, DbService>();
+builder.Services.AddScoped<IEntityService<Person>, EntityService<Person>>();
+builder.Services.AddScoped<IEntityService<PersonAddress>, EntityService<PersonAddress>>();
+builder.Services.AddScoped<IEntityService<PhoneNumber>, EntityService<PhoneNumber>>();
+builder.Services.AddScoped<IPersonService, PersonService>();
+builder.Services.AddScoped<IPhoneService, PhoneService>();
+builder.Services.AddScoped<IAddressService, AddressService>();
 
 var app = builder.Build();
 
@@ -21,6 +43,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+app.UseCors();
 
 app.UseAuthorization();
 

@@ -4,7 +4,7 @@ using PersonRegistry.Core.Models;
 
 namespace PersonRegistry.Data;
 
-public class PersonRegistryDbContext : DbContext
+public class PersonRegistryDbContext : DbContext, IPersonRegistryDbContext
 {
     private readonly IConfiguration _configuration;
     public DbSet<Person> Persons { get; set; }
