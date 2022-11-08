@@ -1,5 +1,6 @@
 using PersonRegistry.Data;
 using PersonRegistry.Core.Models;
+using PersonRegistry.Core.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +20,11 @@ builder.Services.AddCors(options =>
 builder.Services.AddDbContext<PersonRegistryDbContext>();
 
 builder.Services.AddScoped<IPersonRegistryDbContext, PersonRegistryDbContext>();
+builder.Services.AddScoped<IDbService, DbService>();
+builder.Services.AddScoped<IEntityService<Person>, EntityService<Person>>();
+builder.Services.AddScoped<IEntityService<PersonAddress>, EntityService<PersonAddress>>();
+builder.Services.AddScoped<IEntityService<PhoneNumber>, EntityService<PhoneNumber>>();
+builder.Services.AddScoped<IPersonService, PersonService>();
 
 var app = builder.Build();
 

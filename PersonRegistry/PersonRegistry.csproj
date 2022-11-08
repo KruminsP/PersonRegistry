@@ -16,6 +16,7 @@
   <ItemGroup>
     <ProjectReference Include="..\PersonRegistry.Core\PersonRegistry.Core.csproj" />
     <ProjectReference Include="..\PersonRegistry.Data\PersonRegistry.Data.csproj" />
+    <ProjectReference Include="..\PersonRegistry.Services\PersonRegistry.Services.csproj" />
   </ItemGroup>
 
 </Project>
