@@ -4,7 +4,7 @@ using PersonRegistry.Core.Services;
 
 namespace PersonRegistry.Controllers
 {
-    [Microsoft.AspNetCore.Components.Route("phoneNumbers")]
+    [Microsoft.AspNetCore.Components.Route("number")]
     [ApiController]
     public class NumberController : Controller
     {
@@ -15,7 +15,7 @@ namespace PersonRegistry.Controllers
             _phoneService = phoneService;
         }
 
-        [Route("phoneNumbers")]
+        [Route("number")]
         [HttpPost]
         public IActionResult AddPhoneNumber(PhoneNumber number)
         {

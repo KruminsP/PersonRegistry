@@ -16,7 +16,7 @@ public class PersonService : EntityService<Person>, IPersonService
         var first = _context.Persons.SingleOrDefault(p => p.Id == request.FirstPersonId);
         var second= _context.Persons.SingleOrDefault(p => p.Id == request.SecondPersonId);
 
-        if (first != null && second != null)
+        if (first != null && second != null && first != second)
         {
             if (!first.IsMarried && !second.IsMarried)
             {

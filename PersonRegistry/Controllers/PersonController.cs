@@ -38,7 +38,7 @@ namespace PersonRegistry.Controllers
         {
             _personService.ChangeMaritalStatus(request);
 
-            return Ok();
+            return Ok(request);
         }
     }
 }

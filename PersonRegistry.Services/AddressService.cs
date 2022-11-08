@@ -10,7 +10,7 @@ public class AddressService : EntityService<PersonAddress>, IAddressService
     {
     }
 
-    public void AddAddress(PersonAddress address)
+    public void AddAddress(PersonAddress address) //changes all other addresses to non primary
     {
         if (address.Primary)
         {
