@@ -1,7 +1,8 @@
 ﻿using PersonRegistry.Core.Models;
+using PersonRegistry.Core.Services;
 using PersonRegistry.Data;
 
-namespace PersonRegistry.Core.Services;
+namespace PersonRegistry.Services;
 
 public class EntityService<T> : DbService, IEntityService<T> where T : Entity
 {

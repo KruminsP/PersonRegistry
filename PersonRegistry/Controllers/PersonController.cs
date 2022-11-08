@@ -1,9 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using PersonRegistry.Models;
-using System.Diagnostics;
 using PersonRegistry.Core.Models;
 using PersonRegistry.Core.Services;
-using PersonRegistry.Data;
 
 namespace PersonRegistry.Controllers
 {
@@ -11,27 +8,27 @@ namespace PersonRegistry.Controllers
     [ApiController]
     public class PersonController : ControllerBase
     {
-        private readonly IPersonService _persons;
+        private readonly IPersonService _personService;
 
         public PersonController(IPersonService persons)
         {
-            _persons = persons;
+            _personService = persons;
         }
 
         [Route("person")]
         [HttpPost]
         public IActionResult AddPerson(Person person)
         {
-            _persons.Create(person);
+            _personService.Create(person);
 
-            return Created("",person);
+            return Created("", person);
         }
 
         [Route("person")]
         [HttpGet]
         public IActionResult GetAllPersons()
         {
-            return Ok(_persons.GetAll());
+            return Ok(_personService.GetAll());
         }
     }
 }

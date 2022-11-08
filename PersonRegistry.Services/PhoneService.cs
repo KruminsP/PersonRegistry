@@ -4,9 +4,9 @@ using PersonRegistry.Data;
 
 namespace PersonRegistry.Services;
 
-public class PersonService : EntityService<Person>, IPersonService
+public class PhoneService : EntityService<PhoneNumber>, IPhoneService
 {
-    public PersonService(IPersonRegistryDbContext context) : base(context)
+    public PhoneService(IPersonRegistryDbContext context) : base(context)
     {
     }
 }

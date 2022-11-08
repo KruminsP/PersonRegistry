@@ -58,9 +58,8 @@ namespace PersonRegistry.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Type")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("Primary")
+                        .HasColumnType("bit");
 
                     b.Property<int>("User")
                         .HasColumnType("int");

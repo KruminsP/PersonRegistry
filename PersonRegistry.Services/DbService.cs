@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PersonRegistry.Core.Models;
+using PersonRegistry.Core.Services;
 using PersonRegistry.Data;
-using System.Collections.Generic;
 
-namespace PersonRegistry.Core.Services;
+namespace PersonRegistry.Services;
 
 public class DbService : IDbService
 {

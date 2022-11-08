@@ -16,7 +16,7 @@ namespace PersonRegistry.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     User = table.Column<int>(type: "int", nullable: false),
-                    Type = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Primary = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
