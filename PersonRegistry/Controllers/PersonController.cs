@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PersonRegistry.Core.Models;
+using PersonRegistry.Core.Requests;
 using PersonRegistry.Core.Services;
 
 namespace PersonRegistry.Controllers
@@ -29,6 +30,15 @@ namespace PersonRegistry.Controllers
         public IActionResult GetAllPersons()
         {
             return Ok(_personService.GetAll());
+        }
+
+        [Route("person")]
+        [HttpPut]
+        public IActionResult ChangeMaritalStatus(ChangeMaritalStatusRequest request)
+        {
+            _personService.ChangeMaritalStatus(request);
+
+            return Ok();
         }
     }
 }
