@@ -8,5 +8,6 @@ public class PhoneService : EntityService<PhoneNumber>, IPhoneService
 {
     public PhoneService(IPersonRegistryDbContext context) : base(context)
     {
+
     }
 }
