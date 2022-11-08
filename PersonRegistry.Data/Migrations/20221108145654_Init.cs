@@ -31,7 +31,9 @@ namespace PersonRegistry.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    BirthDate = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    BirthDate = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    IsMarried = table.Column<bool>(type: "bit", nullable: false),
+                    SpouseId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
