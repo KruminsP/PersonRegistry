@@ -1,6 +1,6 @@
 # PersonRegistry
 
-Registry of personal data, marital status
+Registry of people that adds new people, their addresses and phone numbers to a database. Marital status can be changed and spouses can be added from existing people.
 
 powershell - cd .\source\repos\PersonRegistry\PersonRegistry\
              dotnet build
