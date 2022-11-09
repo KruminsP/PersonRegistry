@@ -1,7 +1,7 @@
 # PersonRegistry
 
 Registry of people that adds new people, their addresses and phone numbers to a database. Marital status can be changed and spouses can be added from existing people.  
-Front-end repository @ https://github.com/KruminsP/PersonRegistryFront
+Front-end repository [HERE](https://github.com/KruminsP/PersonRegistryFront).
 
 
 Back-end         
