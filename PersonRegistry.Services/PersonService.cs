@@ -11,10 +11,29 @@ public class PersonService : EntityService<Person>, IPersonService
     {
     }
 
+    public void Divorce(int id)
+    {
+        var first = _context.Persons.FirstOrDefault(p => p.Id == id);
+
+        if (first != null)
+        {
+            var second = _context.Persons.FirstOrDefault(p => p.SpouseId == id);
+
+            first.SpouseId = null;
+            first.IsMarried = false;
+
+            second.SpouseId = null;
+            second.IsMarried = false;
+
+            _context.SaveChanges();
+        }
+    }
+
     public void ChangeMaritalStatus(ChangeMaritalStatusRequest request)
     {
         var first = _context.Persons.SingleOrDefault(p => p.Id == request.FirstPersonId);
         var second = _context.Persons.SingleOrDefault(p => p.Id == request.SecondPersonId);
+
 
         if (first != null && second != null && first != second)
         {

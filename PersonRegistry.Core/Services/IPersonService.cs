@@ -7,4 +7,5 @@ public interface IPersonService : IEntityService<Person>
 {
     void ChangeMaritalStatus(ChangeMaritalStatusRequest request);
     bool Exists(Person person);
+    void Divorce(int id);
 }

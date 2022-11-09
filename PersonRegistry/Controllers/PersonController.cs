@@ -54,5 +54,13 @@ namespace PersonRegistry.Controllers
 
             return Ok(request);
         }
+
+        [Route("person/{id}")]
+        [HttpDelete]
+        public IActionResult Divorce(int id)
+        {
+            _personService.Divorce(id);
+            return Ok();
+        }
     }
 }

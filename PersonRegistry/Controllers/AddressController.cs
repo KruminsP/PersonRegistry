@@ -32,5 +32,14 @@ namespace PersonRegistry.Controllers
 
             return Created("", address);
         }
+
+        [Route("address/{id}")]
+        [HttpGet]
+        public IActionResult GetAddressByPersonId(int id)
+        {
+            var address = _addressService.GetAddressByPersonId(id);
+
+            return Ok(address);
+        }
     }
 }
