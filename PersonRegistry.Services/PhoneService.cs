@@ -10,4 +10,10 @@ public class PhoneService : EntityService<PhoneNumber>, IPhoneService
     {
 
     }
+
+    public bool Exists(PhoneNumber number)
+    {
+        return _context.PhoneNumbers.FirstOrDefault(p =>
+            p.Number == number.Number) != null;
+    }
 }

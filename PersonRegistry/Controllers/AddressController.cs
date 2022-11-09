@@ -4,7 +4,7 @@ using PersonRegistry.Core.Services;
 
 namespace PersonRegistry.Controllers
 {
-    [Microsoft.AspNetCore.Components.Route("addresses")]
+    [Microsoft.AspNetCore.Components.Route("address")]
     [ApiController]
     public class AddressController : Controller
     {
@@ -15,7 +15,7 @@ namespace PersonRegistry.Controllers
             _addressService = addressService;
         }
 
-        [Route("addresses")]
+        [Route("address")]
         [HttpPost]
         public IActionResult AddAddress(PersonAddress address)
         {
