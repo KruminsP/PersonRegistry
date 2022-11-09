@@ -1,6 +1,7 @@
 using PersonRegistry.Data;
 using PersonRegistry.Core.Models;
 using PersonRegistry.Core.Services;
+using PersonRegistry.Core.Validations;
 using PersonRegistry.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -28,6 +29,10 @@ builder.Services.AddScoped<IEntityService<PhoneNumber>, EntityService<PhoneNumbe
 builder.Services.AddScoped<IPersonService, PersonService>();
 builder.Services.AddScoped<IPhoneService, PhoneService>();
 builder.Services.AddScoped<IAddressService, AddressService>();
+
+builder.Services.AddScoped<PersonValidator>();
+builder.Services.AddScoped<NumberValidator>();
+builder.Services.AddScoped<AddressValidator>();
 
 var app = builder.Build();
 
