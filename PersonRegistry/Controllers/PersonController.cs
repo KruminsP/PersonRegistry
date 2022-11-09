@@ -20,6 +20,11 @@ namespace PersonRegistry.Controllers
         [HttpPost]
         public IActionResult AddPerson(Person person)
         {
+            if (_personService.Exists(person))
+            {
+                return Conflict();
+            }
+
             _personService.Create(person);
 
             return Created("", person);

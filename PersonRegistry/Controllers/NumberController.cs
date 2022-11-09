@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PersonRegistry.Core.Models;
 using PersonRegistry.Core.Services;
+using PersonRegistry.Services;
+using System;
 
 namespace PersonRegistry.Controllers
 {
@@ -19,6 +21,12 @@ namespace PersonRegistry.Controllers
         [HttpPost]
         public IActionResult AddPhoneNumber(PhoneNumber number)
         {
+
+            if (_phoneService.Exists(number))
+            {
+                return Conflict();
+            }
+
             _phoneService.Create(number);
 
             return Created("", number);

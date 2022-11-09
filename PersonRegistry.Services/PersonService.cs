@@ -14,7 +14,7 @@ public class PersonService : EntityService<Person>, IPersonService
     public void ChangeMaritalStatus(ChangeMaritalStatusRequest request)
     {
         var first = _context.Persons.SingleOrDefault(p => p.Id == request.FirstPersonId);
-        var second= _context.Persons.SingleOrDefault(p => p.Id == request.SecondPersonId);
+        var second = _context.Persons.SingleOrDefault(p => p.Id == request.SecondPersonId);
 
         if (first != null && second != null && first != second)
         {
@@ -38,5 +38,13 @@ public class PersonService : EntityService<Person>, IPersonService
         }
 
         _context.SaveChanges();
+    }
+
+    public bool Exists(Person person)
+    {
+        return _context.Persons.FirstOrDefault(p =>
+            p.FirstName == person.FirstName &&
+            p.LastName == person.LastName &&
+            p.BirthDate == person.BirthDate) != null;
     }
 }
