@@ -2,6 +2,7 @@
 using PersonRegistry.Core.Models;
 using PersonRegistry.Core.Requests;
 using PersonRegistry.Core.Services;
+using PersonRegistry.Core.Validations;
 
 namespace PersonRegistry.Controllers
 {
@@ -10,16 +11,24 @@ namespace PersonRegistry.Controllers
     public class PersonController : ControllerBase
     {
         private readonly IPersonService _personService;
+        private readonly PersonValidator _personValidator;
 
-        public PersonController(IPersonService persons)
+        public PersonController(IPersonService persons,
+            PersonValidator personValidator)
         {
             _personService = persons;
+            _personValidator = personValidator;
         }
 
         [Route("person")]
         [HttpPost]
         public IActionResult AddPerson(Person person)
         {
+            if (!_personValidator.IsValid(person))
+            {
+                return BadRequest();
+            }
+
             if (_personService.Exists(person))
             {
                 return Conflict();

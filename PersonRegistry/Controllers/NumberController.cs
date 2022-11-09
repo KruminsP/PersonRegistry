@@ -3,6 +3,7 @@ using PersonRegistry.Core.Models;
 using PersonRegistry.Core.Services;
 using PersonRegistry.Services;
 using System;
+using PersonRegistry.Core.Validations;
 
 namespace PersonRegistry.Controllers
 {
@@ -11,16 +12,23 @@ namespace PersonRegistry.Controllers
     public class NumberController : Controller
     {
         private readonly IPhoneService _phoneService;
+        private readonly NumberValidator _numberValidator;
 
-        public NumberController(IPhoneService phoneService)
+        public NumberController(IPhoneService phoneService,
+        NumberValidator numberValidator)
         {
             _phoneService = phoneService;
+            _numberValidator = numberValidator;
         }
 
         [Route("number")]
         [HttpPost]
         public IActionResult AddPhoneNumber(PhoneNumber number)
         {
+            if (!_numberValidator.IsValid(number))
+            {
+                return BadRequest();
+            }
 
             if (_phoneService.Exists(number))
             {
