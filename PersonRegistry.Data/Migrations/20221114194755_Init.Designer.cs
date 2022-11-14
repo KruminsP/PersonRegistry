@@ -12,7 +12,7 @@ using PersonRegistry.Data;
 namespace PersonRegistry.Data.Migrations
 {
     [DbContext(typeof(PersonRegistryDbContext))]
-    [Migration("20221108145654_Init")]
+    [Migration("20221114194755_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -70,8 +70,9 @@ namespace PersonRegistry.Data.Migrations
                     b.Property<bool>("Primary")
                         .HasColumnType("bit");
 
-                    b.Property<int>("User")
-                        .HasColumnType("int");
+                    b.Property<string>("User")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

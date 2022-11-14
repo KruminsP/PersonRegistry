@@ -27,10 +27,9 @@ public class AddressService : EntityService<PersonAddress>, IAddressService
         _context.SaveChanges();
     }
 
-    public PersonAddress GetAddressByPersonId(int id)
+    public int GetIdByName(AddAddressQuery request)
     {
-        var address = _context.Addresses.FirstOrDefault(a => a.User == id);
-
-        return address;
+        var id = _context.Persons.FirstOrDefault(p => $"{p.FirstName} {p.LastName}" == request.User).Id;
+        return id;
     }
 }

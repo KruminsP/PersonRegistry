@@ -21,25 +21,19 @@ namespace PersonRegistry.Controllers
 
         [Route("address")]
         [HttpPost]
-        public IActionResult AddAddress(PersonAddress address)
+        public IActionResult AddAddress(PersonAddress[] addressList)
         {
-            if (!_addressValidator.IsValid(address))
+            if (addressList.Length < 1)
             {
                 return BadRequest();
             }
 
-            _addressService.AddAddress(address);
+            foreach (var address in addressList)
+            {
+                _addressService.AddAddress(address);
+            }
 
-            return Created("", address);
-        }
-
-        [Route("address/{id}")]
-        [HttpGet]
-        public IActionResult GetAddressByPersonId(int id)
-        {
-            var address = _addressService.GetAddressByPersonId(id);
-
-            return Ok(address);
+            return Created("", addressList);
         }
     }
 }
