@@ -1,10 +1,17 @@
 # PersonRegistry
 
-Registry of people that adds new people, their addresses and phone numbers to a database. Marital status can be changed and spouses can be added from existing people.
+[![Registry](https://i.ibb.co/YWFXM5k/Registry.png "Registry")](#)
+<picture><img src="" alt="Registry"title="Registry"/></picture>
 
-powershell -  
-cd .\PersonRegistry\PersonRegistry\
-dotnet build  
-dotnet run -port 7062
-             
-PersonRegistry Package Manager Console  - focus on PersonRegistry.Data - update-database
+Registry of people that adds new people, their addresses and phone numbers to a database. Marital status can be changed and spouses can be added from existing people.  
+Front-end repository [HERE](https://github.com/KruminsP/PersonRegistryFront).
+
+
+Back-end         
+PersonRegistry Package Manager Console  - focus on PersonRegistry.Data - update-database  
+Run PersonRegistry
+  
+Front-end  
+terminal npm i, ng serve
+
+View @ http://localhost:4200/
