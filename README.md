@@ -1,6 +1,6 @@
 # PersonRegistry
 
-[![Registry](https://i.ibb.co/YWFXM5k/Registry.png "Registry")](#)
+[![Registry](https://im5.ezgif.com/tmp/ezgif-5-58e38e57d8.gif "Registry")](#)
 <picture><img src="" alt="Registry"title="Registry"/></picture>
 
 Registry of people that adds new people, their addresses and phone numbers to a database. Marital status can be changed and spouses can be added from existing people.  
