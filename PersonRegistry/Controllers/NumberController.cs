@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PersonRegistry.Core.Models;
 using PersonRegistry.Core.Services;
-using PersonRegistry.Services;
-using System;
 using PersonRegistry.Core.Validations;
 
 namespace PersonRegistry.Controllers
@@ -23,21 +21,22 @@ namespace PersonRegistry.Controllers
 
         [Route("number")]
         [HttpPost]
-        public IActionResult AddPhoneNumber(PhoneNumber number)
+        public IActionResult AddPhoneNumber(PhoneNumber[] numbers)
         {
-            if (!_numberValidator.IsValid(number))
+            if (numbers.Length < 1)
             {
                 return BadRequest();
             }
 
-            if (_phoneService.Exists(number))
+            foreach (var number in numbers)
             {
-                return Conflict();
+                if (_numberValidator.IsValid(number))
+                {
+                    _phoneService.AddPhone(number);
+                }
             }
 
-            _phoneService.Create(number);
-
-            return Created("", number);
+            return Created("", numbers);
         }
     }
 }

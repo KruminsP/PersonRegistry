@@ -1,6 +1,7 @@
 ﻿using PersonRegistry.Core.Models;
 using PersonRegistry.Core.Services;
 using PersonRegistry.Data;
+using System.Net;
 
 namespace PersonRegistry.Services;
 
@@ -11,9 +12,9 @@ public class PhoneService : EntityService<PhoneNumber>, IPhoneService
 
     }
 
-    public bool Exists(PhoneNumber number)
+    public void AddPhone(PhoneNumber number)
     {
-        return _context.PhoneNumbers.FirstOrDefault(p =>
-            p.Number == number.Number) != null;
+        _context.PhoneNumbers.Add(number);
+        _context.SaveChanges();
     }
 }

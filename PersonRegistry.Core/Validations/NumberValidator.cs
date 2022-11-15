@@ -7,7 +7,7 @@ public class NumberValidator
     public bool IsValid(PhoneNumber number)
     {
         if (string.IsNullOrEmpty(number.Number) ||
-            number.User == null)
+            string.IsNullOrEmpty(number.User))
         {
             return false;
         }

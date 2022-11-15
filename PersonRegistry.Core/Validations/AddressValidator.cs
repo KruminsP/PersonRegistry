@@ -8,7 +8,7 @@ public class AddressValidator
     {
         if (string.IsNullOrEmpty(address.Address) ||
             address.Primary == null ||
-            address.User == null)
+            string.IsNullOrEmpty(address.User))
         {
             return false;
         }

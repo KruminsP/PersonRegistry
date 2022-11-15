@@ -30,7 +30,10 @@ namespace PersonRegistry.Controllers
 
             foreach (var address in addressList)
             {
-                _addressService.AddAddress(address);
+                if(_addressValidator.IsValid(address))
+                {
+                    _addressService.AddAddress(address);
+                }
             }
 
             return Created("", addressList);
